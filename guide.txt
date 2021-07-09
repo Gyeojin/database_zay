@@ -1,0 +1,12 @@
+- color
+#ffffff (주색)
+#59ab6e (포인트)
+#212934 (보조색)
+#212529 (메인 폰트 컬러)
+
+- font
+Noto Sans KR (한글)
+Roboto (영어)
+
+font-family: 'Noto Sans KR', sans-serif;
+font-family: 'Roboto', sans-serif;
