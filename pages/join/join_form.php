@@ -25,23 +25,52 @@
 
 </head>
 <body>
+  <div class="wrap">
 
-  <?php
-    include $_SERVER["DOCUMENT_ROOT"]."/zay/include/header.php";
-  ?>
+    <?php
+      include $_SERVER["DOCUMENT_ROOT"]."/zay/include/header.php";
+    ?>
 
-  <form action="/zay/php/insert_mem.php" method="post" name="mem_form" enctype="multipart/form-data"> <!-- submit을 하면 데이터를 받아줄 파일에 인서트 -->
-    <!-- multipart/form-data : <form> 요소가 파일이나 이미지를 서버로 전송할 때 주로 사용함. -->
-    <p>아이디 : <input type="text" name="mem_id"></p>
-    <p>비밀번호 : <input type="password" name="mem_pass"></p>
-    <p>비밀번호 확인: <input type="password" name="mem_pass_check"></p>
-    <p>프로필 사진 : <input type="file" name="mem_pf"></p>
-    <p>이름 : <input type="text" name="mem_name"></p>
-    <p>이메일 : <input type="text" name="mem_email"></p>
+    <section class="join">
+      <div class="center">
+        <div class="form_box">
+          <form action="/zay/php/insert_mem.php" method="post" name="mem_form" enctype="multipart/form-data" class="mem_form"> <!-- submit을 하면 데이터를 받아줄 파일에 인서트 -->
+            <!-- multipart/form-data : <form> 요소가 파일이나 이미지를 서버로 전송할 때 주로 사용함. -->
+            <p>
+              <label>아이디</label><input type="text" name="mem_id" placeholder="아이디">
+              <button type="button">중복체크</button>
+            </p>
+            <p>
+              <label>비밀번호</label><input type="password" name="mem_pass" autocomplete="off" placeholder="비밀번호">
+            </p>
+            <p>
+              <label>비밀번호확인</label><input type="password" name="mem_pass_check" placeholder="비밀번호 확인">
+            </p>
+            <p>
+              <label>프로필 사진</label><input type="file" name="mem_pf">
+            </p>
+            <p>
+              <label>이름</label><input type="text" name="mem_name" placeholder="이름"> 
+            </p>
+            <p>
+              <label>이메일</label><input type="text" name="mem_email" placeholder="이메일">
+            </p>
+            <div class="submit_info">
+              <button type="button" id="submit_btn">회원가입</button>
+              <!-- 바로 데이터 제출이 아닌 필터링을 해줘야 하기때문에 button으로 씀 -->
+              <span>이미 회원이신가요? <a href="/zay/pages/join/login_form.php">Click</a></span>
+            </div>
+          </form>
+        </div>
+      </div>
+    </section>
 
-    <button type="button" id="submit_btn">제출</button>
-    <!-- 바로 데이터 제출이 아닌 필터링을 해줘야 하기때문에 button으로 씀 -->
-  </form>
+    <?php
+      include $_SERVER["DOCUMENT_ROOT"]."/zay/include/footer.php";
+    ?>
+
+  </div>
+  
 
   <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.4.1/jquery.min.js"></script>
   <script src="/zay/js/jq.main.js"></script>

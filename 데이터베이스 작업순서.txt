@@ -1,0 +1,2 @@
+1. 데이터베이스 테이블 작성
+2. admin폴더 -> product_insert.php 생성

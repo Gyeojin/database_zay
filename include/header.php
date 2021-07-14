@@ -43,11 +43,11 @@
     <!-- Header Section -->
     <header>
       <div class="center">
-        <h2 class="logo"><a href="#">Zay</a></h2>
+        <h2 class="logo"><a href="/zay/index.php">Zay</a></h2>
         <div class="menu_items">
           <ul class="gnb">
             <li><a href="/zay/index.php">Home</a></li>
-            <li><a href="#">About</a></li>
+            <li><a href="/zay/pages/admin/product_insert_form.php">About</a></li>
             <li><a href="#">Shop</a></li>
             <li><a href="#">Community</a></li>
           </ul>
@@ -57,8 +57,8 @@
               if(!$userid){
             ?>
               <!-- 로그아웃 시 보여질 UI -->
-              <a href="/zay/pages/login_form.php">로그인</a>
-              <a href="/zay/pages/join_form.php">회원가입</a>
+              <a href="/zay/pages/join/login_form.php">로그인</a>
+              <a href="/zay/pages/join/join_form.php">회원가입</a>
               <a href="#"><img src="/zay/img/default-user.png" alt=""></a>
             <?php
               } else {
