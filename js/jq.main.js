@@ -55,7 +55,37 @@ $(function(){
 
     $(".load_more button").click(function(){
       $(".featured_item:hidden").slice(0,3).show();
+      if($(".featured_item:hidden").length == 0){
+        $(".load_more").html(`<a href="#">전체보기</a>`);
+      }
     });
   }
   loadMore();
+
+  //featured item images height fit to responsive width
+
+  const imgHeightFit = function(){
+    const featuredImgWidth = $(".featured_img").outerWidth(); //outerWidth : 가장 바깥쪽의 가로값 읽어줌
+    $(".featured_img").outerHeight(featuredImgWidth);
+    //console.log(featuredImgWidth);
+    //console.log(featuredImgHeight);
+    $(window).resize(function(){
+      const featuredImgWidth = $(".featured_img").outerWidth(); //outerWidth : 가장 바깥쪽의 가로값 읽어줌
+      $(".featured_img").outerHeight(featuredImgWidth);
+    });
+  }
+  imgHeightFit();
+
+  // detail page image tabs function
+  const detailTab = function(){
+    $(".detail_tab_btns span").click(function(){
+      const index = $(this).index();
+  
+      $(".detail_img>img").hide();
+      $(".detail_img>img").eq(index).show();
+    });
+  
+    $(".detail_tab_btns span").eq(0).trigger("click"); //처음 갱신 시 무조건 0번을 강제클릭
+  }
+  detailTab();
 });
