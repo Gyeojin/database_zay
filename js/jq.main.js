@@ -88,4 +88,25 @@ $(function(){
     $(".detail_tab_btns span").eq(0).trigger("click"); //처음 갱신 시 무조건 0번을 강제클릭
   }
   detailTab();
+
+  const buttonBgcolor = function(){
+    $(".size_choice span").click(function(){
+      $(".size_choice span").css({background:"#59ab6e"});
+      for(let j=0; j < $(".size_choice span").length; j++){
+        $(this).eq(j).css({background:"#6c757d"});
+      }
+    });
+  }
+  buttonBgcolor();
+
+  let count=1;
+  
+  function add(){
+    count++;
+  }
+
+  $(".size .plus").click(function(){
+    add();
+    $(".size b").text(count);
+  });
 });

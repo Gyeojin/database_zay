@@ -83,16 +83,16 @@
               </div>
               <div class="size_quan">
                 <div class="size">
-                  <p>Size : 
+                  <p class="size_choice">Size : 
                     <span>S</span>
                     <span>M</span>
                     <span>L</span>
                     <span>XL</span>
                   </p>
                   <p>Quantity
-                    <span>-</span>
+                    <span class="minus">-</span>
                     <b>1</b>
-                    <span>+</span>
+                    <span class="plus">+</span>
                   </p>
                 </div>
                 <div class="detail_btns">
@@ -112,44 +112,68 @@
       <div class="center">
         <div class="comments_tit">
           <span>REVIEW </span> | 
-          <span><em>15</em> Comments</span>
+          <?php
+            include $_SERVER["DOCUMENT_ROOT"]."/connect/db_conn.php";
+            $sql_rev = "SELECT * FROM zay_review WHERE ZAY_pro_rev_con_idx='{$pro_idx}' ORDER BY ZAY_pro_rev_idx DESC";//zay_review 테이블에서 
+            $rev_result = mysqli_query($dbConn, $sql_rev);
+            //한 페이지에 답글이 여러개 있을 수 있으므로 반복문 설정
+            $rev_total = mysqli_num_rows($rev_result); //num_rows : 갯수만 세는 함수
+          ?>
+          <span><em><?=$rev_total?></em> Comments</span>
         </div>
         <div class="comment_insert">
-          <form action="#" method="post" name="comment_form">
+          <form action="/zay/php/comment_insert.php?pro_idx=<?=$pro_idx?>&pro_writer=<?=$userid?>" method="post" name="comment_form">
             <textarea placeholder="상품평을 입력해 주세요." name="comment_txt"></textarea>
-            <button type="button">입력</button>
+            <?php
+              if(!$userid){
+            ?>
+            <button type="button" onclick="plzLogin()">입력</button>
+            <?php } else { ?>
+            <button type="button" onclick="insertTxt()">입력</button>
+            <?php } ?> <!--로그인여부 판별하여 코멘트 다는 로직 -->
           </form>
         </div>
         <!-- Loop Comments -->
         <div class="comment_contents">
+        <?php
+          while($rev_row = mysqli_fetch_array($rev_result)){
+            $rev_idx = $rev_row['ZAY_pro_rev_idx'];
+            $rev_writer = $rev_row['ZAY_pro_rev_id'];
+            $rev_reg = $rev_row['ZAY_pro_rev_reg'];
+            $rev_txt = $rev_row['ZAY_pro_rev_txt'];
+            $rev_pro_idx = $rev_row['ZAY_pro_rev_con_idx'];
+        ?>
           <div class="loop_contents">
             <div class="comments_tit">
-              <span>koyeo5725 </span> | 
-              <span>2021-07-16 14:36:15</span>
+              <span><?=$rev_writer?></span> | 
+              <span><?=$rev_reg?></span>
             </div>
-            <div class="comments_text">
-              <span class="txt"><em>상품 좋아요. 배송도 빨랐습니다.</em></span>
-              <span class="comment_btns">
-                <button type="button">수정</button>
-                <button type="button">삭제</button>
-              </span>
-            </div>
+            <form action="/zay/php/comment_update.php?pro_idx=<?=$rev_idx?>&pro_writer=<?=$rev_writer?>" method="post">
+              <div class="comments_text">
+                <em class="rev_txt"><?=$rev_txt?></em>
+                <textarea class="rev_update_txt" name="rev_update_txt"><?=$rev_txt?></textarea>
+                <?php if(!$userid){ ?>
+                <input type="hidden">
+                <?php } else { if($userid != $rev_writer){ ?>
+                <input type="hidden">
+                <?php } else { ?>
+                <span class="comment_btns">
+                  <button type="submit" class="rev_send">보내기</button>
+                  <button type="button" class="rev_update">수정</button>
+                  <button type="button" class="rev_delete" value="<?=$rev_idx?>">삭제</button>
+                  <input type="hidden" value="<?=$rev_writer?>">
+                </span>
+                <?php
+                    }
+                  }
+                ?>
+              </div>
+            </form>
           </div>
-        </div>
         <!-- End of Loop Comments -->
-        <!-- Loop Comments -->
-        <div class="comment_contents">
-          <div class="loop_contents">
-            <div class="comments_tit">
-              <span>koyeo5725 </span> | 
-              <span>2021-07-16 14:36:15</span>
-            </div>
-            <div class="comments_text">
-              <span class="txt"><em>Not bad!</em></span>
-            </div>
-          </div>
-        </div>
-        <!-- End of Loop Comments -->
+        <?php
+          }
+        ?>
       </div>
     </section>
 
@@ -159,6 +183,55 @@
   </div>
   <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.4.1/jquery.min.js"></script>
   <script src="/zay/js/jq.main.js"></script>
+  <script>
+    $(function(){
+      $(".rev_update").click(function(){
+        $(this).toggleClass("on");
+
+        if($(this).hasClass("on")){
+          $(this).text('수정취소');
+          $(this).prev(".rev_send").show(); //prev : 내가 클릭한 것의 바로 앞의 것을 선택
+          $(this).parent(".comment_btns").siblings(".rev_txt").hide();
+          $(this).parent(".comment_btns").siblings(".rev_update_txt").show();
+        } else {
+          $(this).text('수정');
+          $(this).prev(".rev_send").hide();
+          $(this).parent(".comment_btns").siblings(".rev_txt").show();
+          $(this).parent(".comment_btns").siblings(".rev_update_txt").hide();
+        }
+      });
+    });
+
+    $(".rev_delete").click(function(){
+
+      const confirmCheck = confirm('정말 삭제하시겠습니까?');
+      //console.log(confirmCheck);
+
+      if(!confirmCheck){
+        return false;
+      } else {
+        const del_val = $(this).val();
+        const pro_writer = $(this).next("input").val();
+        location.href=`/zay/php/comment_delete.php?del_key=${del_val}&pro_writer=${pro_writer}`;
+      }
+      
+    });
+
+  </script>
+  <script>
+    function plzLogin(){
+      alert('로그인 후 이용해 주세요.');
+      return false;
+    }
+
+    function insertTxt(){
+      if(!document.comment_form.comment_txt.value){
+        alert ('상품평을 입력해 주세요.');
+        return;
+      }
+      document.comment_form.submit();
+    }
+  </script>
 
 </body>
 
