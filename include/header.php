@@ -1,6 +1,12 @@
   <?php
     //로그인 판별 로직
       session_start();
+      if(isset($_SESSION['useridx'])){
+        $useridx=$_SESSION['useridx'];
+      } else{
+        $useridx="";
+      }
+
       if(isset($_SESSION['userid'])){ //isset 셋팅이 되어있냐 아니냐
         $userid=$_SESSION['userid'];
       } else{

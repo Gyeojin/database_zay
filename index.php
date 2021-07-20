@@ -148,8 +148,8 @@
               </a>
               <div class="like_unlike">
                 <div class="like_icons">
-                  <span>좋아요 | <b>20</b></span>
-                  <span>싫어요 | <b>11</b></span>
+                  <span>like | <b>20</b></span>
+                  <span>unlike | <b>11</b></span>
                 </div>
                 <p><i class="fa fa-krw"></i> <?=$pro_row_price?></p>
               </div>

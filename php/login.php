@@ -1,5 +1,5 @@
 <?php
-
+  //★$userid / $useridx 변수가 처음 저장됨
   //로그인 순서
   //1. 아이디 조회
   //2. 조회된 아이디 판별(if 조건)
@@ -51,6 +51,7 @@
       session_start();
       $_SESSION['userid'] = $login_row['ZAY_mem_id'];
       $_SESSION['userprofile'] = $login_row['ZAY_mem_pf'];
+      $_SESSION['useridx'] = $login_row['ZAY_mem_idx'];
 
       echo "
         <script>
