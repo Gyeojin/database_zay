@@ -137,6 +137,31 @@
             $pro_row_tit = $pro_row['ZAY_pro_name'];
             $pro_row_desc = $pro_row['ZAY_pro_desc'];
             $pro_row_price = $pro_row['ZAY_pro_pri'];
+
+            //like, unlike 기능 구현(반복 기능 추가)
+            $like_unlike_type = -1;
+            $status_query = "SELECT COUNT(*) AS cntStatus, ZAY_like_unlike_type FROM zay_like_unlike WHERE ZAY_like_unlike_userid='{$useridx}' AND ZAY_like_unlike_postid='{$pro_row_idx}'";
+
+            $status_result = mysqli_query($dbConn, $status_query);
+            $status_row = mysqli_fetch_array($status_result);
+            $count_status = $status_row['cntStatus'];
+
+            //echo $count_status;----------------------------------------- //
+
+            if($count_status > 0) {
+              $like_unlike_type = $status_row['ZAY_like_unlike_type'];
+            }
+            $like_query = "SELECT COUNT(*) cntLikes FROM zay_like_unlike WHERE ZAY_like_unlike_type=1 AND ZAY_like_unlike_postid='{$pro_row_idx}'";
+            $like_result=mysqli_query($dbConn,$like_query);
+            $like_row=mysqli_fetch_array($like_result);
+            $total_likes=$like_row['cntLikes'];
+
+            //echo $total_likes;
+
+            $unlike_query = "SELECT COUNT(*) cntUnLikes FROM zay_like_unlike WHERE ZAY_like_unlike_type=0 AND ZAY_like_unlike_postid='{$pro_row_idx}'";
+            $unlike_result=mysqli_query($dbConn,$unlike_query);
+            $unlike_row=mysqli_fetch_array($unlike_result);
+            $total_unlikes=$unlike_row['cntUnLikes'];
         ?>
           <!-- Featured Loop Item -->
           <div class="featured_item">
@@ -148,8 +173,23 @@
               </a>
               <div class="like_unlike">
                 <div class="like_icons">
-                  <span>like | <b>20</b></span>
-                  <span>unlike | <b>11</b></span>
+
+                <?php if(!$userid){ ?>
+
+                <span onclick="plzLogin()">Like | <b><?=$total_likes?></b></span>
+                <span onclick="plzLogin()">Unlike | <b><?=$total_unlikes?></b></span>
+
+                <?php } else { ?>
+
+                  <span id="like_<?=$pro_row_idx?>" class="like" style="<?php if($like_unlike_type == 1){ echo "background:#59ab6e; color:#fff;";}?>">Like | 
+                    <b id="likes_<?=$pro_row_idx?>"><?=$total_likes?></b>
+                  </span>
+                  <span id="unlike_<?=$pro_row_idx?>" class="unlike" style="<?php if($like_unlike_type == 0){ echo "background: #d84646; color: #fff;";}?>">Unlike | 
+                    <b id="unlikes_<?=$pro_row_idx?>"><?=$total_unlikes?></b>
+                  </span>
+
+                <?php } ?>
+
                 </div>
                 <p><i class="fa fa-krw"></i> <?=$pro_row_price?></p>
               </div>
@@ -190,6 +230,14 @@
   <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.4.1/jquery.min.js"></script>
   <script src="/zay/lib/lightslider.js"></script>
   <script src="/zay/js/jq.main.js"></script>
+  <script src="/zay/js/jq.like.unlike.js"></script>
   <script src="/zay/js/slider.js"></script>
+  
+  <script>
+    function plzLogin(){
+      alert('로그인 후 이용해 주세요.');
+      return false;
+    }
+  </script>
 </body>
 </html>

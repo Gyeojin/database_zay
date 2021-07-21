@@ -157,4 +157,16 @@ section.pro_insert {background: #e9eef5;}
 .comments .comments_text button{background:#59ab6e; color:#fff; padding:5px 15px;}
 .comments .comments_text button.rev_send {display: none;}
 
+/* Community Page Style Code */
+.community .comm_table{background: #fff; width: 80%; margin: auto; padding: 20px; border-radius: 10px; box-shadow: 1px 1px 20px 2px rgba(181,181,181,0.3);}
+.community .comm_table li {padding: 5px; display: flex;}
+.community .comm_table li span {text-align: center;}
+.community .comm_table li span:nth-child(1){width: 10%;}
+.community .comm_table li span:nth-child(2){width: 15%; border-left: 1px solid #fff;}
+.community .comm_table li span:nth-child(3){width: 50%; border-left: 1px solid #fff;}
+.community .comm_table li span:nth-child(4){width: 15%; border-left: 1px solid #fff;}
+.community .comm_table li span:nth-child(5){width: 10%; border-left: 1px solid #fff;}
+.community .comm_table li.comm_tit {background:#59ab6e; color: #fff;}
+.community .comm_table li.comm_con{border-bottom: 1px solid #bdd6c4;}
+.community .comm_table li.comm_con span:nth-child(3){text-align: left; padding-left: 15px;}
 

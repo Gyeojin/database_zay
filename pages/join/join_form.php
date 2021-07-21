@@ -37,8 +37,8 @@
           <form action="/zay/php/insert_mem.php" method="post" name="mem_form" enctype="multipart/form-data" class="mem_form"> <!-- submit을 하면 데이터를 받아줄 파일에 인서트 -->
             <!-- multipart/form-data : <form> 요소가 파일이나 이미지를 서버로 전송할 때 주로 사용함. -->
             <p>
-              <label>아이디</label><input type="text" name="mem_id" placeholder="아이디">
-              <button type="button">중복체크</button>
+              <label>아이디</label><input type="text" name="mem_id" placeholder="아이디" class="mem_id">
+              <button type="button" class="id_check">중복체크</button>
             </p>
             <p>
               <label>비밀번호</label><input type="password" name="mem_pass" autocomplete="off" placeholder="비밀번호">
@@ -76,9 +76,31 @@
   <script src="/zay/js/jq.main.js"></script>
 
   <script>
+    $(function(){
+      $(".id_check").click(function(){
+        const id_val = $(".mem_id").val();
+        //alert(id_val);
+        $.ajax({
+          url : "/zay/php/id_check.php",
+          type : 'get',
+          data : {id_val : id_val},
+          success : function(data){
+            alert(data);
+          }
+        });
+      });
+    });
+  </script>
+
+  <script>
     //아이디, 비밀번호 필터링 (작성 안됐을때 알림창 뜨게하는법)
     const submitBtn = document.querySelector("#submit_btn");
-    
+    const idCheck = document.querySelector(".id_check");
+    let check = false;
+
+    idCheck.addEventListener('click',function(){
+      check = true;
+    });
     
     submitBtn.addEventListener('click',function(){
       if(!document.mem_form.mem_id.value){
@@ -120,6 +142,11 @@
       if(!document.mem_form.mem_email.value){
         alert('이메일을 입력해 주세요.');
         document.mem_form.mem_email.focus();
+        return;
+      }
+
+      if(!check == true){
+        alert('아이디 중복체크를 눌러주세요.');
         return;
       }
       document.mem_form.submit();

@@ -109,4 +109,18 @@ $(function(){
     add();
     $(".size b").text(count);
   });
+
+  function detailFit(){ //디테일 페이지 이미지 높이 맞춤
+    const imgHeight = $(".detail_img_item").outerHeight();
+    const btnsHeight = $(".detail_tab_btns").outerHeight();
+    $(".detail_img").height(imgHeight + btnsHeight);
+  }
+  
+  $(window).resize(function(){ //창 리사이즈 할 때 로직
+    setTimeout(function(){ //리사이즈, 스크롤 이벤트 시 쓰로틀링 (컴퓨터 부하 막기 위함)
+      detailFit();
+    }, 150);
+  });
+
+  detailFit();
 });
