@@ -158,8 +158,9 @@ section.pro_insert {background: #e9eef5;}
 .comments .comments_text button.rev_send {display: none;}
 
 /* Community Page Style Code */
-.community .comm_table{background: #fff; width: 80%; margin: auto; padding: 20px; border-radius: 10px; box-shadow: 1px 1px 20px 2px rgba(181,181,181,0.3);}
-.community .comm_table li {padding: 5px; display: flex;}
+.community .comm_center {width: 80%; margin: auto;}
+.community .comm_table{background: #fff; padding: 20px; border-radius: 10px; box-shadow: 1px 1px 20px 2px rgba(181,181,181,0.3);}
+.community .comm_table li {padding: 10px 5px; display: flex;}
 .community .comm_table li span {text-align: center;}
 .community .comm_table li span:nth-child(1){width: 10%;}
 .community .comm_table li span:nth-child(2){width: 15%; border-left: 1px solid #fff;}
@@ -168,5 +169,27 @@ section.pro_insert {background: #e9eef5;}
 .community .comm_table li span:nth-child(5){width: 10%; border-left: 1px solid #fff;}
 .community .comm_table li.comm_tit {background:#59ab6e; color: #fff;}
 .community .comm_table li.comm_con{border-bottom: 1px solid #bdd6c4;}
-.community .comm_table li.comm_con span:nth-child(3){text-align: left; padding-left: 15px;}
+.community .comm_table li.comm_con span {display: flex; align-items: center; justify-content: center;}
+.community .comm_table li.comm_con span:nth-child(3){justify-content: flex-start; padding-left: 15px;}
 
+.community .search_paging {display: flex; _background: #ddd; justify-content: space-between; margin: 10px auto 0 auto;}
+.community .paging {display: flex;}
+.community .paging span{width: 30px; height: 30px; background:#59ab6e; color: #fff; font-size: 16px; margin-left: 2px; display: flex; justify-content: center; align-items: center; border-radius: 3px; border: 1px solid #59ab6e;}
+.community .paging span.num {background:#fff; color: #59ab6e; font-size: 14px;}
+.community .search_form {display: flex;}
+.community .search_form select{border: 1px solid #59ab6e; background:#59ab6e; color: #fff; outline: 0; border-radius: 5px 0 0 5px; padding: 0 5px; height: 30px;}
+.community .search_form input {border: 1px solid #59ab6e; margin: 0 3px; height: 30px;}
+.community .search_form button {font-size: 20px; color: #fff; border: 1px solid #59ab6e; background: #59ab6e; padding: 0 15px; border-radius: 0 5px 5px 0; height: 30px;}
+
+.community .write {margin-top: 100px;}
+.community .write h4 {font-size: 16px; margin: 10px 20px 10px 0; color: #777; font-weight: 400; border-left: 2px solid #59ab6e; padding-left: 15px;}
+.community .write_form {background: #fff; border: 1px solid #59ab6e; padding: 20px; border-radius: 10px;}
+.community .write_tit {display: flex; justify-content: space-between;}
+.community .write_tit label {width: 20%; background: #59ab6e; color: #fff; text-align: center; padding: 10px 0;}
+.community .write_tit input {width: calc(80% - 5px); border: 1px solid #59ab6e;}
+
+.community .write_con {width: 100%; margin-top: 5px;}
+.community .write_con textarea {width: 100%; height: 150px; font-family: 'Roboto', 'Noto Sans KR', sans-serif;}
+.community .write_con textarea::placeholder {color: #ccc;}
+.community .write_btn {width: 100%; height: auto; margin-top: 10px; text-align: right;}
+.community .write_btn button {background: #59ab6e; color: #fff; padding: 8px 20px;}
