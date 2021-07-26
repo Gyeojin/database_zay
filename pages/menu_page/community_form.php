@@ -47,13 +47,25 @@
       <!-- End of Comm_table -->
       <div class="search_paging comm_center">
         <div class="search">
-          <form action="#" class="search_form" name="search_form">
-            <select name="" id="">
-              <option value="">아이디</option>
-              <option value="">제목</option>
+          <form action="/zay/pages/menu_page/community_search.php" class="search_form" name="search_form" method="post">
+            <select name="qna_search">
+              <option value="id_search">아이디</option>
+              <option value="tit_search">제목</option>
             </select>
-            <input type="text" placeholder="검색어를 입력하세요.">
-            <button type="submit"><i class="fa fa-search"></i></button>
+            <input type="text" placeholder="검색어를 입력하세요." name="search_txt">
+            <button type="button" onclick="search_check()"><i class="fa fa-search"></i></button>
+
+            <script>
+              function search_check(){
+                if(!document.search_form.search_txt.value){
+                alert('검색어를 입력해 주세요.');
+                document.search_form.search_txt.focus();
+                return;
+                }
+                document.search_form.submit();
+              }
+            </script>
+
           </form>
         </div>
         <div class="paging">

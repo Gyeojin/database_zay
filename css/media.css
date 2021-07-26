@@ -68,6 +68,27 @@
 
   .comments .comment_insert textarea {width: 70%; height: 60px;}
   .comments .comment_insert form button {width: 30%; padding: 0;}
+
+  .comm_center {width: 100%; max-width: 1230px;}
+  .community .comm_table li span {font-size: 12px;}
+  .community .comm_table li span:nth-child(1) {display: none;}
+  .community .comm_table li span:nth-child(2) {border-left: none; width: 20%;}
+  .community .comm_table li span:nth-child(3) {width: 60%;}
+  .community .comm_table li span:nth-child(4) {width: 20;}
+  .community .comm_table li span:nth-child(5) {display: none;}
+
+  .community .search_paging {flex-direction: column; align-items: center;}
+  .search {width: 100%; max-width: 1230px;}
+  .search select{width: 20%; font-size: 12px;}
+  .community .search_form input {width: 65%;}
+  .community .search_form button {width: 15%; font-size: 12px;}
+  .community .paging {width: 100%; max-width: 1230px; justify-content: flex-end; margin-top: 15px;}
+
+  .community .write_tit label,
+  .community .write_tit input,
+  .community .write_tit input::placeholder,
+  .community .write_tit textarea,
+  .community .write_btn button, .community .write_btn a{font-size: 12px;}
   
 }
 
@@ -96,7 +117,7 @@
 
   footer h3 {font-size: 25px; padding: 0 0 10px 0;}
   footer a {font-size: 14px;}
-  footer .company_info p {font-size: 14px;}
+  footer .company_info p{font-size: 14px;}
 
   section.join .mem_form label,
   section.join .login_form label {display: none;}
@@ -114,6 +135,15 @@
   .detail_wrap .size_quan p {width: 100%;}
   .detail_wrap .size_quan p span {margin: 0 5px;}
   .pro_insert .detail_btns button {font-size: 12px;}
+
+  .community .comm_table li span:nth-child(2) {width: 30%;}
+  .community .comm_table li span:nth-child(3) {width: 70%;}
+  .community .comm_table li span:nth-child(4) {display: none;}
+
+  .search select {width: 30%;}
+
+  .community .paging {justify-content: center;}
+  .community .paging span.num {display: none;}
 }
 
 @media screen and (max-width:389px) {

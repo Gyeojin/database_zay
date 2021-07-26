@@ -87,36 +87,78 @@
       
   </section>
 
+  <section class="comments">
+    <div class="center">
+      <div class="comments_tit">
+        <?php
+          $sql2 = "SELECT * FROM zay_reply WHERE ZAY_comm_reply_idx=$detail_idx";
+          $reply_result = mysqli_query($dbConn, $sql2);
+          $reply_total = mysqli_num_rows($reply_result);
+        ?>
+        <span>REPLY</span> | 
+        <span><em><?=$reply_total?></em> Replies</span>
+      </div>
+      <div class="comment_insert">
+        <form action="/zay/php/reply_insert.php?detail_idx=<?=$detail_idx?>" method="post" name="reply_form">
+          <textarea placeholder="답글을 입력해 주세요." name="reply_txt"></textarea>
+          <?php
+            if(!$userid){
+          ?>
+          <button type="button" onclick="plzLogin()">입력</button>
+          <?php } else { ?>
+          <button type="button" onclick="insertTxt()">입력</button>
+          <?php } ?>
+        </form>
+      </div>
+
+      <div class="comment_contents">
+        <div class="loop_contents">
+          <div class="comments_tit">
+            <span>koyeo5725</span> | 
+            <span>2021-07-26</span>
+          </div>
+          <form action="#" method="post">
+            <div class="comments_text">
+              <em class="rev_txt">첫 댓글입니다.</em>
+              <textarea class="rev_update_txt" name="rev_update_txt">첫 댓글임.</textarea>
+              
+              <span class="comment_btns">
+                <button type="submit" class="rev_send">보내기</button>
+                <button type="button" class="rev_update">수정</button>
+                <button type="button" class="rev_delete" value="">삭제</button>
+                <input type="hidden" value="">
+              </span>
+            </div>
+          </form>
+        </div>
+      <!-- End of Loop Comments -->
+    </div>
+  </section>
+
   <?php
     include $_SERVER["DOCUMENT_ROOT"]."/zay/include/footer.php";
   ?>
 
   <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.4.1/jquery.min.js"></script>
   <script src="/zay/js/jq.main.js"></script>
-  <script>
+  <!-- <script>
     const upBtn = document.querySelector('#update');
     upBtn.addEventListener("click",function(){
       document.write_form.submit();
     });
-  </script>
+  </script> -->
   <script>
     function plzLogin(){
       alert('로그인 후 이용해 주세요.');
       return false;
     }
 
-    function sendWrite(){
-      if(!document.write_form.write_input.value){
-        alert('제목을 입력해 주세요.');
+    function insertTxt(){
+      if(!document.reply_form.reply_txt.value){
+        alert ('답글을 입력해 주세요.');
         return;
       }
-
-      if(!document.write_form.write_con.value){
-        alert('내용을 입력해 주세요.');
-        return;
-      }
-      document.write_form.submit();
+      document.reply_form.submit();
     }
-
   </script>
 </body>

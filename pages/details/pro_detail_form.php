@@ -179,6 +179,7 @@
             <?php } ?> <!--로그인여부 판별하여 코멘트 다는 로직 -->
           </form>
         </div>
+        <!-- End of comment insert -->
         <!-- Loop Comments -->
         <div class="comment_contents">
         <?php
