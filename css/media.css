@@ -18,10 +18,10 @@
   section.join .form_box .mem_form,
   section.join .form_box .login_form {width: 70%;}
 
-  .featured .featured_txt p {display: none;}
-  .featured .like_unlike {flex-direction: column; padding: 0 0 10px 0;}
-  .featured .like_icons{display: flex; justify-content: space-between; padding-bottom: 10px;}
-  .featured .like_icons span {width: 50%; text-align: center;}
+  .featured_txt p {display: none;}
+  .like_unlike {flex-direction: column; padding: 0 0 10px 0;}
+  .like_icons{display: flex; justify-content: space-between; padding-bottom: 10px;}
+  .like_icons span {width: 50%; text-align: center;}
 }
 
 @media screen and (max-width:850px) {
@@ -58,7 +58,7 @@
   section.join .login_form label {font-size: 12px; padding: 10px 15px;}
   section.join .mem_form p:first-child button {font-size: 12px;}
 
-  .featured .featured_item{width: 50%; padding: 10px;}
+  .featured_item{width: 50%; padding: 10px;}
 
   .pro_insert .detail_contents{flex-wrap: wrap;}
   .pro_insert .detail_contents .detail_img {width: 80%; margin: 0 auto 20px auto;}
@@ -128,7 +128,7 @@
   section.join .mem_form p:nth-child(4) {display: block; width: 100%;}
   section.join .mem_form p:nth-child(4) label {display: block; width: 100%;}
 
-  .featured .featured_item{width: 100%;}
+  .featured_item{width: 100%;}
 
   .pro_insert .detail_contents .detail_img{width: 100%;}
   .detail_wrap .size_quan .size{flex-wrap: wrap;}
