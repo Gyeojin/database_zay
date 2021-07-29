@@ -3,14 +3,15 @@
   .slider_wrap {padding: 0 70px;}
 }
 
-@media screen and (max-width:1230px) {
-
-}
 
 
 @media screen and (max-width:1050px) {
+  header .gnb {width: 60%;}
   header .gnb li {margin: 0 25px;}
   header .gnb a {font-size: 16px;}
+  header .login_info {width: 40%;}
+  header .login_info a {font-size: 13px;}
+
   .slider .center {flex-direction: column-reverse;}
   .slider .slider_txt {text-align: center;}
   .slider .slider_img {height: 40vh;}
@@ -147,7 +148,6 @@
 }
 
 @media screen and (max-width:389px) {
-  section.join .form_box .mem_form {}
   section.join .mem_form p:first-child {flex-wrap: wrap;}
   section.join .mem_form p:first-child input {width: 100%;}
   section.join .mem_form p:first-child button {width: 100%;}

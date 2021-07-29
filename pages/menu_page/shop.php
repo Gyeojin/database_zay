@@ -4,7 +4,7 @@
   <meta charset="UTF-8">
   <meta http-equiv="X-UA-Compatible" content="IE=edge">
   <meta name="viewport" content="width=device-width, initial-scale=1, minimum-scale=1, maximum-scale=1, user-scalable=no">
-  <title>Zay Shop || shop</title>
+  <title>Zay Shop || Product</title>
 
   <!-- Favicon Link -->
   <link rel="shortcut icon" href="/zay/img/favicon.ico" type="image/x-icon">
@@ -47,16 +47,19 @@
         <div class="filters">
           <div class="filter_tabs">
             <select onchange="location.href=this.value">
-            <option selected disabled value="">검색조건</option>
+            <option selected disabled value="" id="select">검색조건</option>
               <option value="?key=new">신상품</option>
               <option value="?key=like">좋아요</option>
               <option value="?key=price">가격순</option>
             </select>
           </div>
-          <div class="search" style="border:1px solid;">
-            <input type="text">
-            <i class="fa fa-search"></i>
-          </div>
+          <form action="/zay/pages/menu_page/shop_search_result.php" name="pro_search_form">
+            <div class="search">
+              <input type="text" placeholder="상품명 검색" name="pro_search">
+              <button type="button" id="search_btn"><i class="fa fa-search"></i></button>
+            </div>
+          </form>
+          
         </div>
       </div>
       <!-- End of Show btns -->
@@ -87,8 +90,12 @@
     const pathName = window.location.href; //현재 주소 찍히는 코드.
     //console.log(pathName);
     const btns = document.querySelectorAll('.shop_btns .tabs a');
+    const filterSelect = document.querySelector('#select');
     //console.log(btns);
     const btnsArr = ['all','Watches','Shoes','Accessories'];
+    const filterEng = ['new','like','price'];
+    const filterKor = ['신상품','좋아요','가격순'];
+
     for(let i = 0; i < btnsArr.length; i++){
       btns[i].classList.remove('active');
       if(pathName.includes(btnsArr[i])){
@@ -96,9 +103,23 @@
       }
     }
 
+    for(let i = 0; i < filterEng.length; i++){
+      if(pathName.includes(filterEng[i])){
+        filterSelect.innerText = filterKor[i];
+      }
+    }
+
     function plzLogin(){
       alert('로그인 후 이용해 주세요.');
       return false;
+    }
+
+    document.querySelector("#search_btn").onclick=function(){
+      if(!document.pro_search_form.pro_search.value){
+        alert('상품명을 입력해 주세요.');
+        return;
+      }
+      document.pro_search_form.submit();
     }
 
   </script>

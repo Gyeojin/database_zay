@@ -141,10 +141,16 @@
                     <span class="plus">+</span>
                   </p>
                 </div>
-                <div class="detail_btns">
-                  <button type="button">BUY NOW</button>
-                  <button type="button">ADD TO CART</button>
-                </div>
+                <form action="/zay/php/cart.php" method="post">
+                  <div class="detail_btns">
+                    <button type="button">BUY NOW</button>
+                    <button type="submit" name="add_to_cart">ADD TO CART</button>
+                  </div>
+                  <input type="hidden" name="cart_img" value="<?=$detail_img_1?>">
+                  <input type="hidden" name="cart_name" value="<?=$detail_tit?>">
+                  <input type="hidden" name="cart_desc" value="<?=$detail_desc?>">
+                  <input type="hidden" name="cart_price" value="<?=$detail_pri?>">
+                </form>
               </div>
               <!-- end of size quantity -->
             </div>
