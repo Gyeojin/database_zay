@@ -37,16 +37,30 @@ $(function(){
   barsClick();
 
   //index page description text cut
-  const cuttingText = function(){
+  const cuttingText = function(txtBox, txtCut, txtLen){
     //console.log($(".featured_item").length);
-    for(let i=0; i < $(".featured_item").length; i++){
-      const textLength = $(".featured_item").eq(i).find("p.desc").text();
+    for(let i=0; i < $(txtBox).length; i++){
+      const textLength = $(txtBox).eq(i).find(txtCut).text();
       //console.log(textLength);
 
-      $(".featured_item").eq(i).find("p.desc").text(textLength.substr(0,60)+"...");
+      $(txtBox).eq(i).find(txtCut).text(textLength.substr(0,txtLen)+"...");
     }
   }
-  cuttingText();
+  cuttingText(".featured_item","p.desc",60);
+  cuttingText(".search_item",".search_txt p",120);
+
+  let len = 0;
+  $(window).resize(function(){
+    const wWidth = $(window).width();
+    if(wWidth < 850){
+      len = 50;
+      cuttingText(".search_item",".search_txt p", len);
+    } else {
+      len = 120;
+      cuttingText(".search_item",".search_txt p", len);
+    }
+  });
+
 
   //index page items load more
   const loadMore = function(){

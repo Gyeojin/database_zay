@@ -27,6 +27,7 @@
           $count = count($_SESSION['cart']);
           //echo $count;
           $_SESSION['cart'][$count]=array(
+            'cart_idx' => $_POST['cart_idx'],
             'cart_img' => $_POST['cart_img'],
             'cart_name' => $_POST['cart_name'],
             'cart_desc' => $_POST['cart_desc'],
@@ -48,6 +49,7 @@
         //var_dump($addedItem);
       } else {
         $_SESSION['cart'][0]=array(
+          'cart_idx' => $_POST['cart_idx'],
           'cart_img' => $_POST['cart_img'],
           'cart_name' => $_POST['cart_name'],
           'cart_desc' => $_POST['cart_desc'],
@@ -62,6 +64,23 @@
             history.go(-1);
           </script>
         ";
+      }
+    } //End of Add_to_cart post data
+
+    //start check remove_cart post data
+    if(isset($_POST['cart_remove'])){
+      foreach($_SESSION['cart'] as $key => $value){ //cart session에서 key가 value인 값을 뽑아낸다
+        if($value['cart_name'] == $_POST['cart_remove']){ //추가된 카트 상품 정보 중 상품 이름이 cart_remove 버튼 클릭 시 넘어오는 cart_remove의 post value와 같은 경우
+          unset($_SESSION['cart'][$key]); //cart 세션에 있는 모든 key들을 전부 지워줌
+          $_SESSION['cart'] = array_values($_SESSION['cart']); //써도 안 써도 상관없음 : 단순히 남아있는 배열을 array_values라는 함수에 담아 카트 세션에 다시 저장하는 과정.
+
+          echo "
+            <script>
+              alert('장바구니에서 상품이 삭제되었습니다.');
+              history.go(-1);
+            </script>
+          ";
+        }
       }
     }
   }

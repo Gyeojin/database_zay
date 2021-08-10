@@ -42,7 +42,7 @@
           <a href="?key=all" class="active">All</a>
           <a href="?key=Watches">Watches</a>
           <a href="?key=Shoes">Shoes</a>
-          <a href="?key=Accessories">Accessories</a>
+          <a href="?key=Accessories">Acc</a>
         </div>
         <div class="filters">
           <div class="filter_tabs">
