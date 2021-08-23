@@ -22,6 +22,8 @@ header .login_info a {padding: 0 15px; color: #555; font-weight: 300;}
 header .login_info a:nth-child(2){border-left: 1px solid #212529;}
 header .login_info a:nth-child(3) {padding-right: 0; width: 25px; height: 25px; overflow: hidden; border-radius: 50%; padding-left: 0;}
 header .login_info img{width: 100%;}
+header .login_info a.admin_link {display: flex; justify-content: center; align-items: center;}
+header .login_info a.admin_link i.fa {font-size: 20px;}
 
 header .cart_btn {display: flex; align-items: center;}
 header .cart_btn i {font-size: 20px; color: #59ab6e;}
@@ -238,3 +240,38 @@ section.pro_insert {background: #e9eef5;}
 
 .pro_search .total_pri {width: 100%; height: auto; margin-top: 10px; text-align: right;}
 .pro_search .total_pri i {font-size: 16px; color: #59ab6e;}
+
+/* Admin Page Style Code */
+.admin .admin_tabs {width: 100%; height: auto; text-align: center;}
+.admin .admin_tabs button {background: #59ab6e; color: #fff;}
+
+.admin .admin_panels {width: 100%; height: auto; margin-top: 20px;}
+.admin .pro_admin {width: 100%; height: auto; background: #fff; border: 1px solid #59ab6e; padding: 20px; border-radius: 10px;}
+.admin .pro_insert_form {display: flex; flex-direction: column;}
+.admin .category{display: flex;}
+.admin .category em {background: #59ab6e; color: #fff; padding: 5px 10px;}
+.admin .category select {border: 1px solid #59ab6e; padding: 5px; margin-left: 5px; outline: 0; margin-left: 5px;}
+
+.admin .short_txt {display: flex; justify-content: space-between; margin-top: 5px;}
+.admin .short_txt p {width: calc(25% - 5px); display: flex; justify-content: space-between;}
+.admin .short_txt p label {background: #59ab6e; color: #fff; width: 30%; display: flex; align-items: center; justify-content: center;}
+.admin .short_txt p input {width: calc(70% - 5px); border: 1px solid #59ab6e;}
+.admin .desc_input {margin-top: 5px; width: 100%; height: 150px; border: 1px solid #59ab6e;}
+.admin .desc_input textarea {width: 100%; height: 100%;}
+.admin .img_input {display: flex; width: 100%; margin-top: 5px; justify-content: space-between;}
+.admin .img_input .upload_box{width: calc(50% - 2.5px);}
+.admin .input_controll{position: relative;}
+
+.admin .upload_name {width: 100%; border: 1px solid #59ab6e;}
+.admin .input_img_tit {width: 100%; height: auto; padding: 10px 0; text-align: center; border: 1px solid #59ab6e; color: #fff; background:#59ab6e; display: block; margin-top: 5px; transition: all 0.4s;}
+.admin .input_img_tit:hover {background: #fff; color: #777;}
+.admin .upload_hidden {position: absolute; width: 1px; height: 1px; overflow: hidden; padding: 0;}
+
+.admin .img_wrap {width: 100%; height: auto; padding: 5px; border: 1px solid #59ab6e; margin-top: 5px;}
+.admin .img_wrap img {width: 100%;}
+
+.admin .mem_admin {width: 100%; height: auto; background: lightcoral;}
+.admin .pro_insert_form button {background: #59ab6e; color: #fff; margin-top: 20px;}
+
+
+

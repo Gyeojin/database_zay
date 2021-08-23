@@ -19,6 +19,14 @@
         $userprofile="";
       }
 
+      if(isset($_SESSION['userlevel'])){
+        $userlevel=$_SESSION['userlevel'];
+      } else{
+        $userlevel="";
+      }
+
+      //echo $userlevel;
+
       //echo $userprofile;
   ?>
     <!-- Top Bar Section -->
@@ -68,13 +76,21 @@
               <a href="#"><img src="/zay/img/default-user.png" alt=""></a>
             <?php
               } else {
+                if($userlevel == 1){
             ?>
+              <!-- 로그인 시 보여질 UI -->
+              <a href="/zay/php/logout.php">로그아웃</a>
+              <a href="#"><?=$userid?></a>
+              <a href="/zay/pages/admin/admin.php" class="admin_link"><i class="fa fa-cog"></i></a>
+
+            <?php } else {?>
+
               <!-- 로그인 시 보여질 UI -->
               <a href="/zay/php/logout.php">로그아웃</a>
               <a href="#"><?=$userid?></a>
               <a href="#"><img src="/zay/data/profile/<?=$userprofile?>" alt=""></a>
             <?php
-            }
+            } }
             ?>
             <?php
             $cart_count = 0;

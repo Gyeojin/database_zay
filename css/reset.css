@@ -6,8 +6,8 @@
 a {color: #212529; text-decoration: none;}
 ol, ul {list-style: none;}
 input, button, textarea{outline: 0; border-radius: 0; border: 0; padding: 10px; color: #777;}
-input::placeholder {color: #ccc; font-size: 12px;}
-textarea{resize: none;}
+input::placeholder, textarea::placeholder {color: #ccc; font-size: 12px; font-family: 'Roboto', 'Noto Sans KR', sans-serif;}
+textarea{resize: none; font-family: 'Roboto', 'Noto Sans KR', sans-serif;}
 img {display: block;}
 em{font-style: normal;}
 b{font-weight: normal;}

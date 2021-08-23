@@ -52,6 +52,8 @@
       $_SESSION['userid'] = $login_row['ZAY_mem_id'];
       $_SESSION['userprofile'] = $login_row['ZAY_mem_pf'];
       $_SESSION['useridx'] = $login_row['ZAY_mem_idx'];
+      //유저 레벨 세션 저장
+      $_SESSION['userlevel'] = $login_row['ZAY_mem_level'];
 
       echo "
         <script>
