@@ -161,7 +161,7 @@ $(function () {
       $(".admin_panels>div").eq(tab_idx).show();
     });
 
-    $(".admin_tabs button").dq(0).trigger("click");
+    $(".admin_tabs button").eq(1).trigger("click");
   };
   adminTabs();
 });

@@ -60,21 +60,23 @@
     <div class="like_unlike">
       <div class="like_icons">
 
-      <?php if(!$userid){ ?>
+        <?php if(!$userid){ ?>
 
-      <span onclick="plzLogin()">Like | <b><?=$total_likes?></b></span>
-      <span onclick="plzLogin()">Unlike | <b><?=$total_unlikes?></b></span>
+        <span onclick="plzLogin()">Like | <b><?=$total_likes?></b></span>
+        <span onclick="plzLogin()">Unlike | <b><?=$total_unlikes?></b></span>
 
-      <?php } else { ?>
+        <?php } else { ?>
 
-        <span id="like_<?=$pro_row_idx?>" class="like" style="<?php if($like_unlike_type == 1){ echo "background:#59ab6e; color:#fff;";}?>">Like | 
+        <span id="like_<?=$pro_row_idx?>" class="like"
+          style="<?php if($like_unlike_type == 1){ echo "background:#59ab6e; color:#fff;";}?>">Like |
           <b id="likes_<?=$pro_row_idx?>"><?=$total_likes?></b>
         </span>
-        <span id="unlike_<?=$pro_row_idx?>" class="unlike" style="<?php if($like_unlike_type == 0){ echo "background: #d84646; color: #fff;";}?>">Unlike | 
+        <span id="unlike_<?=$pro_row_idx?>" class="unlike"
+          style="<?php if($like_unlike_type == 0){ echo "background: #d84646; color: #fff;";}?>">Unlike |
           <b id="unlikes_<?=$pro_row_idx?>"><?=$total_unlikes?></b>
         </span>
 
-      <?php } ?>
+        <?php } ?>
 
       </div>
       <p><i class="fa fa-krw"><?=$pro_row_price?></i></p>
@@ -84,7 +86,14 @@
       <p class="desc"><?=$pro_row_desc?></p>
     </div>
     <div class="reviews">
-      <em>Comments(5)</em>
+      <?php
+        include $_SERVER["DOCUMENT_ROOT"]."/connect/db_conn.php";
+        $sql_rev = "SELECT * FROM zay_review WHERE ZAY_pro_rev_con_idx='{$pro_row_idx}'";
+        $rev_result = mysqli_query($dbConn, $sql_rev);
+        //한 페이지에 답글이 여러개 있을 수 있으므로 반복문 설정
+        $rev_total = mysqli_num_rows($rev_result); //num_rows : 갯수만 세는 함수
+      ?>
+      <em>Comments(<?=$rev_total?>)</em>
     </div>
   </div>
 </div>
