@@ -32,6 +32,16 @@
     include $_SERVER["DOCUMENT_ROOT"]."/zay/include/header.php";
   ?>
 
+  <?php if(!$userid || $userlevel != 1){
+    echo "
+      <script>
+        alert('잘못된 접근입니다.');
+        location.href='/zay/index.php';
+      </script>
+    ";
+   }
+  ?>
+
   <section class="admin">
     <div class="center">
       <div class="tit_box">

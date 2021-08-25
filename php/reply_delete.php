@@ -13,12 +13,12 @@
   $reply_id = $_GET['reply_id'];
 
   if(!$userid || $userid != $reply_id){ //or : ||
-    // echo "
-    //   <script>
-    //     alert('잘못된 접근입니다.');
-    //     location.href='/zay/index.php';
-    //   </script>
-    // ";
+    echo "
+      <script>
+        alert('잘못된 접근입니다.');
+        location.href='/zay/index.php';
+      </script>
+    ";
   } else {
     
     include $_SERVER["DOCUMENT_ROOT"]."/connect/db_conn.php";

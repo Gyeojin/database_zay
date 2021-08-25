@@ -22,7 +22,9 @@
     ";
   } else {
 
-    $mem_pass = $_POST['mem_pass'];
+    $password = $_POST['mem_pass'];
+    $mem_pass = password_hash($password, PASSWORD_DEFAULT);
+      //패스워드 암호화 참고 : https://zetawiki.com/wiki/PHP_password_verify()
     $mem_name = $_POST['mem_name'];
     $mem_email = $_POST['mem_email'];
     $mem_regi = date('Y-m-d'); //대문자 Y : 네자리 년도

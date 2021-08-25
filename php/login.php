@@ -37,7 +37,7 @@
     //비밀번호 문자열 추출하여 저장
     $db_pass = $login_row['ZAY_mem_pass'];
     //추출된 문자열과 입력된 비밀번호 문자열 비교
-    if($login_pass != $db_pass){
+    if(!password_verify($login_pass, $db_pass)){
       echo "
         <script>
           alert('비밀번호가 틀립니다.');
